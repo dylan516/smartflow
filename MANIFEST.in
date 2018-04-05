@@ -1,0 +1,3 @@
+include smartflow/.sys/*
+include smartflow/.user/*
+include smartflow/examples/*.py
