@@ -92,11 +92,11 @@ class TestFlowGenerator(object):
 
         local_flags = popolate_local_flags_string(local_flags_bitarray)
 
-        if (timing == None):
+        if (timing is None):
             timing = ['', '', '']
-        if (level == None):
+        if (level is None):
             level = ['', '', '']
-        if (pattern_name == None):
+        if (pattern_name is None):
             pattern_name = '""'
         else:
             pattern_name = '"' + pattern_name + '"'
@@ -273,7 +273,7 @@ class TestFlowGenerator(object):
                         active_node = last_active_node
 
     def write(self, tf_output=None):
-        if (tf_output == None):
+        if (tf_output is None):
             tf_output = self.tf_output
 
         self.update_sections()

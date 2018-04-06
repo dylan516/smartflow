@@ -14,7 +14,6 @@ from smartflow.flowparser.Utils import warning_msg, error_msg, info_msg, \
 
 class ConfigFile(object):
     """
-    Base class for TestFlowGenerator and TestFlowEditor
     """
 
     def __init__(self, config_file):
@@ -33,12 +32,12 @@ class ConfigFile(object):
 
         self.load_config_file()
 
-    def create_config_file(self):
-        src = os.path.join(self.working_path, '.sys', 'config_template.xls')
-        config_file = os.path.join(os.getcwd(), self.option_value_dict['--new'].rstrip('.xls') + '.xls')
-        shutil.copy(src, config_file)
-        info_msg('Create config file "' + config_file + '" from template.')
-        sys.exit()
+    # def create_config_file(self):
+    #     src = os.path.join(self.working_path, '.sys', 'config_template.xls')
+    #     config_file = os.path.join(os.getcwd(), self.option_value_dict['--new'].rstrip('.xls') + '.xls')
+    #     shutil.copy(src, config_file)
+    #     info_msg('Create config file "' + config_file + '" from template.')
+    #     sys.exit()
 
     def load_config_file(self):
         self.wb_selectors = xlrd.open_workbook(self.config_file)
@@ -147,7 +146,7 @@ class ConfigFile(object):
             row_dict = {}
             for index in range(len(row)):
                 row_dict[header[index]] = row[index]
-            if (('testsuite_name_regex' in row_dict) and (row_dict['testsuite_name_regex'].strip() != '')):
+            if ('testsuite_name_regex' in row_dict) and (row_dict['testsuite_name_regex'].strip() != ''):
                 floweditor.append(row_dict)
         return floweditor
 

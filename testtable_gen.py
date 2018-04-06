@@ -1,9 +1,8 @@
-'''
+"""
 
 @author: Dylan
-'''
+"""
 import csv
-
 import sys
 
 from smartflow.flowparser.Utils import get_block_name, get_core_name, \
@@ -15,7 +14,7 @@ class TesttableEditor(object):
     def __init__(self, testtable_editor=None):
         self.lines = []
 
-        if (testtable_editor):
+        if testtable_editor:
             self.lines = self.load_testtable(testtable_editor)
             self.__get_testmodes()
         else:
@@ -33,7 +32,7 @@ class TesttableEditor(object):
     def __get_testmodes(self):
         testmodes = []
         for testmode in self.lines[1][3:]:
-            if ((testmode not in testmodes) and (testmode.strip())):
+            if (testmode not in testmodes) and (testmode.strip()):
                 testmodes.append(testmode)
         return testmodes
 
@@ -43,9 +42,11 @@ class TesttableEditor(object):
             testmodes_list += [testmode] * 5
         return testmodes_list
 
-    def create(self, testmodes=['WS', 'FT', 'QA', 'VA'], \
+    def create(self, testmodes=None, \
                tnum_start=0, tnum_step=1, sbin_start=1, sbin_step=1, \
                hbin_number=1, hbin_name='FAIL'):
+        if testmodes is None:
+            testmodes = ['WS', 'FT', 'QA', 'VA']
         self.testmodes = testmodes
 
         self.line0 = ['Suite name', 'Test name', 'Test number'] + \
@@ -114,7 +115,9 @@ class TesttableEditor(object):
         self.lines = self.lines[:2]
         self.keys = []
 
-    def add(self, suite_name, test_name, limits=['0', 'GE', 'LE', '0', 'NA']):
+    def add(self, suite_name, test_name, limits=None):
+        if limits is None:
+            limits = ['0', 'GE', 'LE', '0', 'NA']
         core = get_core_name(suite_name)
         block = get_block_name(suite_name)
         voltage_mode = get_voltage_mode(suite_name)
@@ -122,7 +125,7 @@ class TesttableEditor(object):
         testnumber = self.__tnum()
 
         Bin_s_name = block + '_' + core + '_' + voltage_mode
-        if (Bin_s_name in self.sbin_dict):
+        if Bin_s_name in self.sbin_dict:
             Bin_s_num = self.sbin_dict[Bin_s_name]
         else:
             Bin_s_num = self.__sbin_num()
@@ -138,7 +141,7 @@ class TesttableEditor(object):
                [Bin_s_num, Bin_s_name, self.hbin_name, self.hbin_number,
                 Bin_type, Bin_reprobe, Bin_overon, Test_remarks, block]
 
-        if (self.get_key(line) not in self.keys):
+        if self.get_key(line) not in self.keys:
             self.lines.append(line)
 
     def add_qscan_limits(self, suite_name):
@@ -161,7 +164,7 @@ class TesttableEditor(object):
         suite_and_test_list = []
         for line in self.lines[2:]:
             suite_and_test = self.get_key(line)
-            if (suite_and_test not in suite_and_test_list):
+            if suite_and_test not in suite_and_test_list:
                 suite_and_test_list.append(suite_and_test)
         return suite_and_test_list
 

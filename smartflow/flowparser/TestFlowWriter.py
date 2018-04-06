@@ -49,7 +49,7 @@ class TestFlowWriter(object):
                 value = self.reader.get_testsuite_property(testsuite, prop)
             prop_dict[prop] = value
 
-            if (value != None):
+            if (value is not None):
                 properties_list.append(prop)
                 properties_list.append(value)
 
