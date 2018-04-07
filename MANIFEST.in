@@ -1,2 +1,4 @@
 include smartflow/.sys/*
 include bin/*.py
+exclude run_setup.py
+exclude MANIFEST.in
