@@ -1,3 +1,2 @@
 include smartflow/.sys/*
-include smartflow/.user/*
-include smartflow/examples/*.py
+include bin/*.py

@@ -1,6 +1,1 @@
-Usage: Automatically generate testflow from xls config file.
-        flowgenerator [OPTION]... [FILE]...
-Options:
-        -c:    Config file.
-        -o:    Test flow output file.
-        -n:    Create a new config file from template
+# smartflow

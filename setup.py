@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from setuptools import setup, find_packages
 
 __version__ = '1.5.0'
@@ -6,12 +7,13 @@ setup(
     name='smartflow',
     version=__version__,
     author='Dylan Liu',
-    url='http://',
+    author_email='dylan.adv@icloud.com',
+    url='https://github.com/dylan516/smartflow.git',
     packages=find_packages(),
     python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*",
     install_requires=['xlrd'],
     package_data={
-        'smartflow': ['.sys', 'examples']
+        'smartflow': ['.sys']
     },
     description=(
         'Library for generate and edit smartest7 test flow'

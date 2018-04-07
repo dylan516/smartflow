@@ -12,7 +12,7 @@ from smartflow.flowparser.TestFlowSection import TestFlowSection
 from smartflow.flowparser.Utils import SECTION_KEYS
 
 
-class TestFlowReader(SmartFlow):
+class TestFlowReader(object):
     """
     classdocs
     """
@@ -28,7 +28,7 @@ class TestFlowReader(SmartFlow):
         """
         Constructor
         """
-        super().__init__()
+        # super().__init__()
         self.working_path = os.path.dirname(__file__)
 
         if tf_input is None:
